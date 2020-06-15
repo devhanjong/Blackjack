@@ -1,20 +1,19 @@
 package blackjack1;
 
+import java.util.Stack;
+
 public class Dealer implements User{
 	String name = "";
 	
-	
+	public Dealer(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
 	}
 
 	
-	@Override
-	public void getCard() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void checkCard() {
@@ -23,20 +22,28 @@ public class Dealer implements User{
 	}
 
 	@Override
-	public void go() {
-		// TODO Auto-generated method stub
-		
+	public Card go(Stack<Card> cards) {
+		Card card = cards.pop();
+		return card;
 	}
 
 	@Override
-	public void stop() {
-		// TODO Auto-generated method stub
-		
+	public boolean stop() {
+		return false;
 	}
 
 	@Override
 	public void openCards() {
 		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public Card getCard(Stack<Card> cards) {
+		Card card = cards.pop();
+		return card;
 		
 	}
 
