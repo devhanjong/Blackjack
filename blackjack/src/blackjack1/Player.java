@@ -22,15 +22,15 @@ public class Player implements User {
 
 	}
 
-
 	@Override
-	public void go(Stack<Card> cards) {  //카드한장뽑기 //21넘는지체크 ,, 카드 6장인지 체크 
+	public void go(Stack<Card> cards) { // 카드한장뽑기 //21넘는지체크 ,, 카드 6장인지 체크
 		Card card = cards.pop();
 		playercards.add(card);
 		System.out.print("플레이어의 카드 : ");
 		for (Card cd : playercards) {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
 		}
+		currentValue();
 		rule.playerrule3(playercards);
 		rule.rule4(playercards);
 	}
@@ -48,9 +48,9 @@ public class Player implements User {
 	}
 
 	@Override
-	public void openCards() {
+	public boolean openCards() {
 		// TODO Auto-generated method stub
-
+		return true;
 	}
 
 	@Override
@@ -60,12 +60,27 @@ public class Player implements User {
 			playercards.add(card);
 		}
 		System.out.print("플레이어의 카드 : ");
+
 		for (Card cd : playercards) {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
 		}
-		if (rule.rule1(playercards.get(0).getValue(), playercards.get(1).getValue()) == true) {
-			blackjackwinstop();
+
+		if (rule.playerblackjack(playercards.get(0).getValue(), playercards.get(1).getValue()) == true) {
+//			blackjackwinstop();
+		} else {
+			currentValue();
 		}
+	}
+
+	@Override
+	public void currentValue() {
+		int sum = 0;
+		for (Card cd : playercards) {
+			sum += cd.value;
+		}
+		System.out.println();
+		System.out.println("현재 플레이어카드의 합: " + sum);
+
 	}
 
 }

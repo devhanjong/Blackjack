@@ -31,6 +31,7 @@ public class Game {
 			Stack<Card> cards = deck.Carddeck();
 			switch (mnum) {
 			case 1:
+				gamemenu = true;
 				System.out.println("게임을 시작합니다");
 				user.get(1).playercards.clear();
 				user.get(0).dealercards.clear();
@@ -38,9 +39,9 @@ public class Game {
 				user.get(0).getCard(cards);
 				user.get(1).getCard(cards);
 				System.out.println();
-				gamemenu = true;
 				// 게임진행시작
 				while (gamemenu) {
+					System.out.println();
 					gnum = gamemenu();
 					switch(gnum) {
 					case 1: // 카드받기 시 카드받고 >> 룰체크 21이 넘는지 아닌지 21오바시 패배 아니면 진행 
@@ -50,14 +51,18 @@ public class Game {
 						break;
 					case 2: //카드그만받으면 딜러카드오픈 >> 플레이어벨류가높으면 >> 딜러카드가 17보다작은지판단 >> 
 						    //드로우>> 딜러카드가 21이안넘는지 판단 >> 승패판단 루프규칙
-						user.get(0).openCards();
+						game = true;
+						if(user.get(0).openCards())break;
 						while(game) {
-							rule.valuecheck(Dealer.dealercards, Player.playercards);
+							if(rule.valuecheck(Dealer.dealercards, Player.playercards))break;
 							if(rule.rule5(Dealer.dealercards)) {
 								user.get(0).go(cards);
+								rule.dealerrule3(Dealer.dealercards);
 							}
-							rule.dealerrule3(Dealer.dealercards);
-							rule.wincheck(Dealer.dealercards, Player.playercards);
+							else {
+								if(rule.dealerrule3(Dealer.dealercards))break;
+								rule.wincheck(Dealer.dealercards, Player.playercards);
+							}
 						}
 						break;
 					case 3:// 포기시 패배, 배팅결과처리 , 

@@ -16,9 +16,9 @@ public interface User {
 	void getCard(Stack<Card> cards);    //처음에 덱에서 2장씩 가져오기
 	  
 	boolean stop();       //게임포기하기    //펄스로 응답 
-	void openCards();  //게임종료시 카드오픈하기
+	boolean openCards();  //게임종료시 카드오픈하기
 	void go(Stack<Card> cards);   //한장 드로우하기    //중복되지않나 ?? getcard랑
 	void checkCard(List<Card> handcards); //나의 카드 체크하기
-	
+	void currentValue();
 	
 }

@@ -10,13 +10,22 @@ public class Dealer implements User {
 		this.name = name;
 	}
 
+	public void currentValue() {
+		int sum = 0;
+		for (Card cd : dealercards) {
+			sum += cd.value;
+		}
+		System.out.println();
+		System.out.println(" 현재 딜러카드의 합: " + sum);
+	}
+
 	public String getName() {
 		return name;
 	}
 
 	@Override
 	public void checkCard(List<Card> handcards) {
-		System.out.println("초보딜러의카드: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
+		System.out.println("초보딜러의카드1: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
 
 	}
 
@@ -24,12 +33,12 @@ public class Dealer implements User {
 	public void go(Stack<Card> cards) {
 
 		Card card = cards.pop();
-		playercards.add(card);
-		System.out.print("초보딜러의 카드 : ");
+		dealercards.add(card);
+		System.out.print("초보딜러의 카드2 : ");
 		for (Card cd : dealercards) {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
 		}
-
+		currentValue();
 	}
 
 	@Override
@@ -38,10 +47,17 @@ public class Dealer implements User {
 	}
 
 	@Override
-	public void openCards() {
-		System.out.print("초보딜러의 카드 : ");
+	public boolean openCards() {
+		System.out.print("초보딜러의 카드3 : ");
 		for (Card cd : dealercards) {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
+		}
+		if (rule.dealerblackjack(dealercards.get(0).value, dealercards.get(1).value)) {
+			// 딜러블랙잭처리
+			return true;
+		} else {
+			currentValue();
+			return false;
 		}
 	}
 
@@ -51,7 +67,7 @@ public class Dealer implements User {
 			Card card = cards.pop();
 			dealercards.add(card);
 		} // 유저이름으로 바꿀것
-		System.out.println("초보딜러의카드: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
+		System.out.println("초보딜러의카드4: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
 	}
 
 }

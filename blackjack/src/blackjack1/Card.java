@@ -69,7 +69,7 @@ public class Card {
 			break;
 		case 12:
 			setValue(10);
-			setPoint("k");
+			setPoint("K");
 			break;
 		}
 	}
