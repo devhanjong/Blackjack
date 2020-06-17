@@ -25,7 +25,7 @@ public class Dealer implements User {
 
 	@Override
 	public void checkCard(List<Card> handcards) {
-		System.out.println("초보딜러의카드1: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
+		System.out.println("딜러의 카드: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
 
 	}
 
@@ -34,7 +34,7 @@ public class Dealer implements User {
 
 		Card card = cards.pop();
 		dealercards.add(card);
-		System.out.print("초보딜러의 카드2 : ");
+		System.out.print("딜러의 카드 : ");
 		for (Card cd : dealercards) {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
 		}
@@ -48,11 +48,11 @@ public class Dealer implements User {
 
 	@Override
 	public boolean openCards() {
-		System.out.print("초보딜러의 카드3 : ");
+		System.out.print("딜러의 카드 : ");
 		for (Card cd : dealercards) {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
 		}
-		if (rule.dealerblackjack(dealercards.get(0).value, dealercards.get(1).value)) {
+		if (rule.dealerBlackjack(dealercards.get(0).value, dealercards.get(1).value)) {
 			// 딜러블랙잭처리
 			return true;
 		} else {
@@ -67,7 +67,7 @@ public class Dealer implements User {
 			Card card = cards.pop();
 			dealercards.add(card);
 		} // 유저이름으로 바꿀것
-		System.out.println("초보딜러의카드4: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
+		System.out.println("딜러의 카드: " + dealercards.get(0).getPatterns() + dealercards.get(0).getPoint() + " 비공개 ");
 	}
 
 }

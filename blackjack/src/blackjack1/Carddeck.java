@@ -1,8 +1,5 @@
 package blackjack1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
 
 public class Carddeck {
@@ -20,7 +17,6 @@ public class Carddeck {
 		}
 		// ¼ÅÇÃ
 		suf.Suffle(deck);
-		System.out.println(Arrays.toString(deck));
 		
 		for (int i = 0; i < deck.length; i++) {
 			Card card = new Card();

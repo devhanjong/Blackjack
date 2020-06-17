@@ -31,7 +31,7 @@ public class Player implements User {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
 		}
 		currentValue();
-		rule.playerrule3(playercards);
+		rule.playerRule3(playercards);
 		rule.rule4(playercards);
 	}
 
@@ -39,11 +39,6 @@ public class Player implements User {
 	public boolean stop() {
 		System.out.println("게임을 포기하셨습니다.");
 		Game.gamemenu = false;
-		return false;
-	}
-
-	public boolean blackjackwinstop() {
-
 		return false;
 	}
 
@@ -65,8 +60,7 @@ public class Player implements User {
 			System.out.printf("%s%s ", cd.Patterns, cd.point);
 		}
 
-		if (rule.playerblackjack(playercards.get(0).getValue(), playercards.get(1).getValue()) == true) {
-//			blackjackwinstop();
+		if (rule.playerBlackjack(playercards.get(0).getValue(), playercards.get(1).getValue()) == true) {
 		} else {
 			currentValue();
 		}

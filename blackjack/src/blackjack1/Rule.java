@@ -3,10 +3,11 @@ package blackjack1;
 import java.util.List;
 
 public class Rule {
+	///////////////////////////////////////////////////////////////////////////
 //카드 받기에서의 승패가 결정되는룰 
 	// 플레이어의 첫 두장의 value가 21이면 승리 A값이 1로 설정되있으므로
 	// A와 value 10카드조합이면 승리
-	public boolean playerblackjack(int value1, int value2) {
+	public boolean playerBlackjack(int value1, int value2) {
 		if (value1 + value2 == 11) {
 			if (value1 == 1 || value2 == 1) {
 				System.out.println("축하합니다 블랙잭입니다");
@@ -22,7 +23,7 @@ public class Rule {
 
 	// 플레이어의 카드가 6장이고 21이 넘어가지않으면 승리
 	public void rule4(List<Card> cards) {
-		if (cards.size() == 6 && playerrule3(cards)) {
+		if (cards.size() == 6 && playerRule3(cards)) {
 			System.out.println("승리");
 			Game.gamemenu = false;
 			// 승리시 결과처리
@@ -30,7 +31,7 @@ public class Rule {
 	}
 
 	// 플레이어의 카드합이 21이 넘어가면 플레이어 패배
-	public boolean playerrule3(List<Card> cards) {
+	public boolean playerRule3(List<Card> cards) {
 		int sum = 0;
 		for (Card cd : cards) {
 			sum += cd.value;
@@ -48,10 +49,10 @@ public class Rule {
 		// 패배후 동작기능 ?
 
 	}
-/////////////////
+///////////////////////////////////////////////////////////////////////////
 //카드 그만받기에서의 승패가결정되는룰
 	
-	public boolean dealerblackjack(int value1, int value2) {
+	public boolean dealerBlackjack(int value1, int value2) {
 		if (value1 + value2 == 11) {
 			if (value1 == 1 || value2 == 1) {
 				System.out.println("딜러의  블랙잭입니다. 딜러의 승리 ");
@@ -67,7 +68,7 @@ public class Rule {
 
 
 	// 딜러의 카드합이 21넘으면 승리
-	public boolean dealerrule3(List<Card> cards) {
+	public boolean checkDealerOver21(List<Card> cards) {
 		int sum = 0;
 		for (Card cd : cards) {
 			sum += cd.value;
@@ -90,7 +91,7 @@ public class Rule {
 
 	// 딜러는 플레이어 stop시 카드값이 17미만이면 go 17이상이면 stop 한다
 	// 딜러카드가 17보다 작은지 아닌지 ? 판단 //딜러카드가 17~21이면 stop //21 이상이면 플레이어승
-	public boolean rule5(List<Card> cards) {
+	public boolean checkUnder17(List<Card> cards) {
 		int sum = 0;
 		for (Card cd : cards) {
 			sum += cd.value;
@@ -108,7 +109,7 @@ public class Rule {
 	// 딜러의 카드합이 21이 넘어가면 플레이어 승리
 
 	// 플레이어가 stop했을시 딜러의 카드합과 비교후 높은쪽이 승리 같으면 무승부
-	public void wincheck(List<Card> card1, List<Card> card2) {
+	public void winCheck(List<Card> card1, List<Card> card2) {
 		int sum1 = 0;
 		int sum2 = 0;
 		for (Card cd1 : card1) {
@@ -136,7 +137,7 @@ public class Rule {
 	}
 
 	// 서로의 카드값비교 딜러가 카드 1 플레이어가 카드 2
-	public boolean valuecheck(List<Card> card1, List<Card> card2) {
+	public boolean valueCheck(List<Card> card1, List<Card> card2) {
 		int sum1 = 0;
 		int sum2 = 0;
 		for (Card cd1 : card1) {
@@ -156,7 +157,7 @@ public class Rule {
 			// 플레이어 패배
 		}
 	}
-
+///////////////////////////////////////////////////////////////////////////////////////////
 	public void Rule2() {
 
 //		System.out.println("블랙잭은 카드의 숫자합이 21과 가깝게 만드는 게임입니다.");
